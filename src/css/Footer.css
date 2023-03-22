@@ -1,8 +1,12 @@
 .section_padding{
     padding: 4rem 4rem;
 }
+#root{
+    width: 100%;
+}
 .Footer{
 background-color: #01010E;
+width: 100%;
 }
 .sb_footer{
 display: flex;

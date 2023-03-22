@@ -1,15 +1,20 @@
 
 import React from 'react';
 import './App.css';
-import AddRemoveInputField from './component/AddRemoveInputField';
-import Footer from './component/Footer';
-import Login from './component/Login';
-import Navbar from './component/Navbar';
-import Otp from './component/OtpVerification';
+import Card from './component/cardStartup';
+import GuestPage from './component/GuestPage';
+// import AddRemoveInputField from './component/AddRemoveInputField';
+// import Footer from './component/Footer';
+// import Login from './component/Login';
+// import Navbar from './component/Navbar';
+// import Otp from './component/OtpVerification';
 
-import Signup from './component/Signup';
-import Register from './Registration/Register';
-import Registervc from './Registration/RegisterVC';
+
+// import Signup from './component/Signup';
+// import Sso from './component/Sso';
+// import Login from './component/Ulogin';
+// import Register from './Registration/Register';
+// import Registervc from './Registration/RegisterVC';
 
 
 
@@ -17,7 +22,8 @@ function App() {
   return (
     <>
       {/* <Navbar/> */}
-      <Signup/>
+      {/* <Signup/> */}
+      {/* <Card/> */}
       {/* <Count/> */}
       {/* <Otp/> */}
       {/* <Footer /> */}
@@ -26,6 +32,8 @@ function App() {
       {/* <Registervc/> */}
       {/* <Sso/> */}
       {/* <Login/> */}
+      {/* <Login/> */}
+      <GuestPage/>
     </>
 
   );

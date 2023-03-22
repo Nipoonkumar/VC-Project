@@ -8,21 +8,21 @@ function Navbar() {
     navRef.current.classList.toggle("responsive");
   }
   return (
-    <div className='container'>
-      <FaReact size={40} />
-      <nav ref={navRef}>
-        <a href="/#">Home</a>
-        <a href="/#">About Us</a>
-        <a href="/#">Log In</a>
-        <a href="/#">Sign Up</a>
-        <button className='nav-btn nav-close-btn' onClick={showNavbar}>
-          <FaTimes/>
+      <div className='container'>
+        <FaReact size={40} />
+        <nav ref={navRef}>
+          <a href="/#">Home</a>
+          <a href="/#">About Us</a>
+          <a href="/#">Log In</a>
+          <a href="/#">Sign Up</a>
+          <button className='nav-btn nav-close-btn' onClick={showNavbar}>
+            <FaTimes/>
+          </button>
+        </nav>
+        <button className='nav-btn' onClick={showNavbar}>
+          <FaBars />
         </button>
-      </nav>
-      <button className='nav-btn' onClick={showNavbar}>
-        <FaBars />
-      </button>
-    </div>
+      </div>
   )
 }
 export default Navbar;

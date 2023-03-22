@@ -21,4 +21,5 @@
   transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
   -webkit-transform: rotateY(-1.1459155902616465deg)   ;
   transform: rotateY(-1.1459155902616465deg)   ;
+  font-family: 'Titillium Web';
   }

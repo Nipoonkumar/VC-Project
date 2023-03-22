@@ -12,7 +12,7 @@ function Sso(){
     // const[user,setUser]=useState();
     useEffect(()=>{ 
       
-        
+            
         // global google
         google.accounts.id.initialize({
             client_id:"214250890867-6icteu2k2kfamb31020vhda61qfqj3j8.apps.googleusercontent.com",

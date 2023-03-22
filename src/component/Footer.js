@@ -1,5 +1,5 @@
 import React from "react";
-import "./Footer.css";
+import "/home/nineleaps/project/src/css/Footer.css";
 const Footer=()=>{
     return(
         <div className="Footer">
