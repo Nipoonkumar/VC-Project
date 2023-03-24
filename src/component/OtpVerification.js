@@ -1,39 +1,67 @@
-import React from 'react'
-import "/home/nineleaps/project/src/css/button.css"
-import "/home/nineleaps/project/src/css/txtForm.css"
+
+import React, { useState } from "react";
+import axios from "axios";
+import "/home/nineleaps/project/src/css/otp.css";
 function Otp() {
-
-    const divShadow = {
-        
-        boxShadow: '7px 7px 24px 4px #737373',
-        margin: '4em',
-        padding: '1em',
-        width:'500px'
-      }; 
-          
-          
-    return (
-        <>
-            <h1>Verify yourself!</h1>
-            <div className='container' style={divShadow} >
-
-                <div className="OTP-Verify">
-                    <label className='label'>Enter Your OTP</label>
-                    <input className='txtForm'
-                        type="text"
-                        name="otp"
-                        id='otp'
-                        placeholder='OTP'
-                    />
-                </div>
-
-                <div>
-                    <button class="btn" type="button">Verify</button>
-                </div>
-
-            </div>
-        </>
-    )
+  const [email, setEmail] = useState("");
+  const [otp, setOTP] = useState("");
+  const [otpSent, setOTPSent] = useState(false);
+  const [otpVerified, setOTPVerified] = useState(false);
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+  const handleOTPChange = (event) => {
+    setOTP(event.target.value);
+  };
+  const handleSendOTP = () => {
+    axios
+      .post("/api/sendOTP", { email })
+      .then((response) => {
+        setOTPSent(true);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleVerifyOTP = () => {
+    axios
+      .post("/api/verifyOTP", { email, otp })
+      .then((response) => {
+        setOTPVerified(true);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  return (<>
+  <div className="veri">
+    <h1 >Verify Yourself!</h1>
+    </div>
+    <div className="Otp">
+      <h4>Enter your email</h4>
+      <input
+        type="text"
+        className="Input"
+        value={email}
+        onChange={handleEmailChange}
+        />
+      {!otpSent && (
+        <button onClick={handleSendOTP} className="submit">
+          Send OTP
+        </button>
+      )}
+      {otpSent && !otpVerified && (
+        <div>
+          <h1>Enter OTP:</h1>
+          <input type="text" value={otp} onChange={handleOTPChange} />
+          <button onClick={handleVerifyOTP}>Verify OTP</button>
+        </div>
+      )}
+      {otpVerified && <h1>OTP Verified Successfully!</h1>}
+    </div>
+      </>
+  );
 }
-
 export default Otp;

@@ -1,11 +1,11 @@
 import React from 'react'
-import style1 from '/home/nineleaps/project/src/card/style1.css'
+import style1 from '/home/nineleaps/project/src/card/card css/styleStartup.css'
 
 
 const cardStartup = () => {
   return (
    <>
-<h1>Startup</h1>
+<h1 className='heading'>Startup</h1>
     <main class="page-content">
   <div class="card">
     <div class="content">

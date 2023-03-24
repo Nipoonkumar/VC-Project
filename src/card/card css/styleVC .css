@@ -5,7 +5,9 @@
   --font-sans: "Rubik", sans-serif;
   --font-serif: "Cardo", serif;
 }
-
+.heading{
+  text-align: center;
+}
 * {
   box-sizing: border-box;
 }

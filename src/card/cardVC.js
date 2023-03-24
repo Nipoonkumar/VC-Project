@@ -1,11 +1,14 @@
 import React from 'react'
-import styleVC from '/home/nineleaps/project/src/card/style1.css'
+// import styleVC from '/home/nineleaps/project/src/card/card css/styleVC .css'
+import styleVC  from '/home/nineleaps/project/src/card/card css/styleVC .css'
+
 
 
 const CardVC = () => {
   return (
    <>
-<h1>Venture Capatlist</h1>
+<h1 className='heading'>Venture Capatlist</h1>
+
     <main className="page-content">
   <div className="card">
     <div className="content">

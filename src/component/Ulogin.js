@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Sso from "./Sso";
+import "/home/nineleaps/project/src/css/Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState('');

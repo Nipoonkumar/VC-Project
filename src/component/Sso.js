@@ -8,6 +8,9 @@ const google = window.google;
 
 function Sso(){
     // console.log(google.accounts)
+    console.log('google:', google);
+console.log('google.accounts:', google.accounts);
+console.log('google.accounts.id:', google.accounts.id);
 
     // const[user,setUser]=useState();
     useEffect(()=>{ 
