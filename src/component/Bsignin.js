@@ -1,107 +1,94 @@
-import React from "react";
+import React, { useRef }from "react";
 import { useFormik } from "formik";
+import { Link } from "react-router-dom";
 import { signUpSchema } from "../schemas/validation";
+import Otp from "../component/OtpVerification";
+
 import axios from "./axios";
-import "/home/nineleaps/project/src/css/Login.css";
+import "/home/nineleaps/project/src/css/Signup.css";
+// import { useEffect } from 'react';
 import Sso from "./Sso";
 import { useState } from "react";
-import "/home/nineleaps/project/src/css/Signup.css";
-import Otp from "/home/nineleaps/project/src/component/OtpVerification.js";
-
-// import Navbar from "./Navbar";
-
-
 const initialValues = {
-  selectedType: "",
+  signuptype: "",
   name: "",
   email: "",
   password: "",
   confirmpassword: "",
 };
-
-function SignupForm() {
-  
-
-  const [selectedType, setSelectedType] = useState('');
-  // const handleChanged = (e) => {
-  //   const target = e.target;
-  //   if (target.checked) {
-  //     setSelectedType(target.value);
-  //   }
-  // };
+function Signup() {
+  const [signuptype, setSignuptype] = useState();
   const handleChanged = (e) => {
     const target = e.target;
     if (target.checked) {
-      setFieldValue('selectedType', target.value);
+      setSignuptype(target.value);
     }
   };
-
-
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue } = useFormik({
+  const {
+    values,
+    errors,
+    touched,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+  } = useFormik({
     initialValues: initialValues,
     validationSchema: signUpSchema,
-      onSubmit: (values, action) => {
-        console.log(values);
-        axios
-          .post("http://192.168.1.128:8080/api/v1/auth/registration/Entrepreneur", {
-            signuptype: selectedType,
-            name: values.name,
-            email: values.email,
-            password: values.password,
-            confirmpassword: values.confirmpassword,
-          })
-          .then((result) => {
-            console.log(result);
-            action.resetForm();
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      },
-    });
-
-    
-
-    console.log("Data being sent:", {
-      signuptype: values.selectedType,
-      name: values.name,
-      email: values.email,
-      password: values.password,
-      confirmpassword: values.confirmpassword,
-    });
-
+    onSubmit: (values, action) => {
+      console.log({
+        signuptype: signuptype,
+        name: values.name,
+        email: values.email,
+        password: values.password,
+        confirmpassword: values.confirmpassword,
+      });
+      // axios
+      //   .post("http://localhost:8081/api/v1/auth/registration", {
+      //     signuptype: values.signuptype,
+      //     name: values.name,
+      //     email: values.email,
+      //     password: values.password,
+      //     confirmpassword: values.confirmpassword,
+      //   })
+      //   .then((result) => {
+      //     console.log(result);
+      //     action.resetForm();
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
+    },
+  });
   return (
     <>
-      {/* <Navbar/>  */}
-      <div className="containerss">
-        <h2 className="title">Create Account</h2>
-        <div className="app-wrapper">
+      <div className="container-signup">
+        <h2 className="title-signup">Create Account</h2>
+        <div className="app-wrapper-signup">
           <form onSubmit={handleSubmit}>
-            <div>
+            <div onClick={handleChanged}>
               <input
                 type="radio"
                 className="Signuptype"
-                id="investor"
+                id="1"
                 value="investor"
-                checked={selectedType === "investor"}
+                checked={signuptype == "investor"}
                 onChange={handleChanged}
               />
-              <label htmlFor="investor">Investor</label>
-
+              Investor
               <input
                 type="radio"
                 className="Signuptype"
-                id="startup"
+                id="2"
                 value="startup"
-                checked={selectedType === "startup"}
+                checked={signuptype == "startup"}
                 onChange={handleChanged}
               />
-              <label htmlFor="startup">StartUp</label>
+              StartUp
             </div>
-            <div className="input-block">
-              <label className="label">Name</label>
+            <div className="input-block-signup">
+              <label className="label-signup">Name</label>
               <input
-                className="txtForm"
+                className="txtForm-signup"
                 type="text"
                 name="name"
                 id="name"
@@ -115,10 +102,10 @@ function SignupForm() {
                 <p className="form-error">{errors.name}</p>
               ) : null}
             </div>
-            <div className="input-block">
-              <label className="label">Email</label>
+            <div className="input-block-signup">
+              <label className="label-signup">Email</label>
               <input
-                className="txtForm"
+                className="txtForm-signup"
                 type="email"
                 name="email"
                 id="email"
@@ -132,10 +119,10 @@ function SignupForm() {
                 <p className="form-error">{errors.email}</p>
               ) : null}
             </div>
-            <div className="input-block">
-              <label className="label">Password</label>
+            <div className="input-block-signup">
+              <label className="label-signup">Password</label>
               <input
-                className="txtForm"
+                className="txtForm-signup"
                 type="password"
                 name="password"
                 id="password"
@@ -149,10 +136,10 @@ function SignupForm() {
                 <p className="form-error">{errors.password}</p>
               ) : null}
             </div>
-            <div className="input-block">
-              <label className="label">Confirm Password</label>
+            <div className="input-block-signup">
+              <label className="label-signup">Confirm Password</label>
               <input
-                className="txtForm"
+                className="txtForm-signup"
                 type="password"
                 name="confirmpassword"
                 id="confirmpassword"
@@ -167,14 +154,13 @@ function SignupForm() {
               ) : null}
             </div>
             <div>
-              <button className="submit" type="submit" onclick={Otp}>
-                Sign Up
-              </button>
+           
+                <button className="submit" type="submit">Signup</button> 
+                
+              
             </div>
             <p>Or</p>
-            <div className="Sso">
-              {/* <Sso /> */}
-            </div>
+            <div className="Sso">{/* <Sso /> */}</div>
             <div className="Para">
               <p>
                 Already have an account? <a href="/Login.js">Login</a>
@@ -189,18 +175,4 @@ function SignupForm() {
     </>
   );
 }
-export default SignupForm;
-
-
-
-
-
-// curl --location 'http://192.168.1.128:8080/api/v1/auth/registration/Entrepreneur' \
-// --header 'Content-Type: application/json' \
-// --data-raw '{
-//     "name":"NIK",
-//     "email":"Nik@gmail.com",
-//     "password":"Nik@123",
-//     "Confirm_password":"Nik@123",
-//     "roleType":"Admin"
-// }'
+export default Signup;

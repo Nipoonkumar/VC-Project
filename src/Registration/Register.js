@@ -1,5 +1,6 @@
 
 import React,{useState} from 'react';
+import  Entreprenur from '/home/nineleaps/project/src/component/personalinfo.js';
 // import Button from '../button';
 // import '/home/nineleaps/project/src/css/register.css';
 import AddRemoveInputField from '/home/nineleaps/project/src/component/AddRemoveInputField.js';
@@ -51,10 +52,11 @@ const Register = () => {
   return (
     <>
     <form action="" onSubmit={handleSubmit}>
+      <div className='StartupLogo'>
+         <Entreprenur/>
+    </div>
 <h2>Register as Startup</h2>
-    {/* <div className='StartupLogo'>
-         <ProfilePic/>
-    </div> */}
+    
     <div>
       <label htmlFor='Startupname'>Startup Name</label><br></br>
       <input type="text" autoComplete='off'

@@ -19,7 +19,7 @@ function Login() {
         <div className="input-block1">
           <label htmlFor="email">Email</label>
           <input
-            className="txtForm"
+            className="txtForms"
             type="text"
             name="email"
             id="email"

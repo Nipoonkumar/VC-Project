@@ -88,13 +88,13 @@ body {
   background-image: url(https://scontent.fblr2-2.fna.fbcdn.net/v/t1.6435-9/69413900_2456960174383967_2168329374850351104_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=973b4a&_nc_ohc=uLl3OF1ACYoAX_wNrrr&_nc_ht=scontent.fblr2-2.fna&oh=00_AfD55sryfeHLLhNyENHvu7zLhc_bD2Z2nbSajKe_9KBtRA&oe=64410224);
 }
 .card:nth-child(2):before {
-  background-image: url(https://images.unsplash.com/photo-1533903345306-15d1c30952de?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+  background-image: url(https://img.etimg.com/thumb/msid-97672510,width-650,height-488,imgsize-192838,,resizemode-75/apple-alphabet-and-amazon-hurt-as-economic-slump-crimps-demand.jpg);
 }
 .card:nth-child(3):before {
-  background-image: url(https://images.unsplash.com/photo-1545243424-0ce743321e11?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEcK2KHAQTCEoC13G_MSVdKGwq9LNGD8ZC6w&usqp=CAU);
 }
 .card:nth-child(4):before {
-  background-image: url(https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+  background-image: url(https://images.moneycontrol.com/static-mcnews/2018/03/Amazon-1.jpg);
 }
 
 .content {

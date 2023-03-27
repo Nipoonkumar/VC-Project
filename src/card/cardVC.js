@@ -1,6 +1,5 @@
 import React from 'react'
-// import styleVC from '/home/nineleaps/project/src/card/card css/styleVC .css'
-import styleVC  from '/home/nineleaps/project/src/card/card css/styleVC .css'
+import '/home/nineleaps/project/src/card/card css/styleVC .css'
 
 
 
@@ -10,21 +9,21 @@ const CardVC = () => {
 <h1 className='heading'>Venture Capatlist</h1>
 
     <main className="page-content">
-  <div className="card">
+  <div className="card1">
     <div className="content">
       <h2 className="title">VC 1</h2>
       <p className="copy">Check out all of these gorgeous mountain trips with beautiful views of, you guessed it, the mountains</p>
       <button className="btn">View Trips</button>
     </div>
   </div>
-  <div className="card">
+  <div className="card1">
     <div className="content">
       <h2 className="title">VC 2</h2>
       <p className="copy">Plan your next beach trip with these fabulous destinations</p>
       <button className="btn">View Trips</button>
     </div>
   </div>
-  <div className="card">
+  <div className="card1">
     <div className="content">
       <h2 className="title">VC 3</h2>
       <p className="copy">It's the desert you've always dreamed of</p>

@@ -12,7 +12,10 @@
     
     border-color: rgb(121, 118, 118);
   }
-
+  .otpv{
+    display:flex;
+    justify-content: center;
+  }
   .veri h1{
  margin-left: 50px;
  margin-bottom: 90px;

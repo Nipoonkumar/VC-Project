@@ -50,7 +50,7 @@ nav a:hover{
         background-color: var(--primaryColor);
         transition: 0.5s;
         transform: translateX(100vh);
-        background-color:rgb(160, 121, 121) ;
+        background-color:rgb(253, 241, 241) ;
     }
     .container .responsive{
         transform: none;
@@ -68,7 +68,7 @@ nav a:hover{
         padding: 15px 10px 15px 10px;
     }
     nav a:hover{
-        background-color: azure;
+        background-color: rgb(252, 252, 252);
         transition: 0.5s;
     }
 }.container{
@@ -123,7 +123,7 @@ nav a:hover{
         background-color: var(--primaryColor);
         transition: 0.5s;
         transform: translateX(100vh);
-        background-color:rgb(160, 121, 121) ;
+        background-color:rgb(139, 187, 226) ;
     }
     .container .responsive{
         transform: none;
@@ -141,7 +141,7 @@ nav a:hover{
         padding: 15px 10px 15px 10px;
     }
     nav a:hover{
-        background-color: azure;
+        background-color: rgb(153, 202, 202);
         transition: 0.5s;
     }
 }

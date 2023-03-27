@@ -1,6 +1,5 @@
 import React from 'react'
-import style1 from '/home/nineleaps/project/src/card/card css/styleStartup.css'
-
+import '/home/nineleaps/project/src/card/card css/styleStartup.css'
 
 const cardStartup = () => {
   return (

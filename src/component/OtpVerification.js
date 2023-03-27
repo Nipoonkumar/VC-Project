@@ -35,7 +35,8 @@ function Otp() {
         console.log(error);
       });
   };
-  return (<>
+  return (
+  <div className="otpv">
   <div className="veri">
     <h1 >Verify Yourself!</h1>
     </div>
@@ -61,7 +62,8 @@ function Otp() {
       )}
       {otpVerified && <h1>OTP Verified Successfully!</h1>}
     </div>
-      </>
+      </div>
+      
   );
 }
 export default Otp;
