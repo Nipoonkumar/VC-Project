@@ -1,7 +1,7 @@
 import React from 'react'
-import photo1 from '/home/nineleaps/project/src/Assets/photo1.jpg'
-import photo2 from '/home/nineleaps/project/src/Assets/photo2.jpg'
-import photo3 from '/home/nineleaps/project/src/Assets/photo3.jpg'
+import photo4 from '/home/nineleaps/project/src/Assets/photo4.jpg'
+import photo5 from '/home/nineleaps/project/src/Assets/photo5.jpg'
+import photo6 from '/home/nineleaps/project/src/Assets/photo6.png'
 
 const Banner = () => {
   return (
@@ -14,13 +14,13 @@ const Banner = () => {
     </div>
     <div className="carousel-inner">
       <div className="carousel-item active">
-        <img src={photo1} className="d-block w-100" alt="..."/>
+        <img src={photo4} className="d-block w-100" alt="..."/>
       </div>
       <div className="carousel-item">
-        <img src={photo2} className="d-block w-100" alt="..."/>
+        <img src={photo5} className="d-block w-100" alt="..."/>
       </div>
       <div className="carousel-item">
-        <img src={photo3} className="d-block w-100" alt="..."/>
+        <img src={photo6} className="d-block w-100" alt="..."/>
       </div>
     </div>
     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

@@ -1,28 +1,20 @@
-@import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Cardo:400i%7CRubik:400,700&display=swap");
 :root {
   --d: 700ms;
   --e: cubic-bezier(0.19, 1, 0.22, 1);
   --font-sans: "Rubik", sans-serif;
   --font-serif: "Cardo", serif;
 }
-
-.heading{
-  text-align: center;
-}
-
 * {
   box-sizing: border-box;
 }
-
 html, body {
   height: 100%;
 }
-
 body {
   display: grid;
   place-items: center;
 }
-
 .page-content {
   display: grid;
   grid-gap: 1rem;
@@ -41,7 +33,6 @@ body {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-
 .card {
   position: relative;
   display: flex;
@@ -84,19 +75,25 @@ body {
   transform: translateY(-50%);
   transition: transform calc(var(--d) * 2) var(--e);
 }
-.card:nth-child(1):before {
-  background-image: url(https://scontent.fblr2-2.fna.fbcdn.net/v/t1.6435-9/69413900_2456960174383967_2168329374850351104_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=973b4a&_nc_ohc=uLl3OF1ACYoAX_wNrrr&_nc_ht=scontent.fblr2-2.fna&oh=00_AfD55sryfeHLLhNyENHvu7zLhc_bD2Z2nbSajKe_9KBtRA&oe=64410224);
+ .card:nth-child(1):before {
+  background-image: url("https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Y29tcGFueXxlbnwwfHwwfHw%3D&w=1000&q=80");
+  background-repeat: no-repeat;
+  background-size: 190% 100%;
 }
 .card:nth-child(2):before {
-  background-image: url(https://img.etimg.com/thumb/msid-97672510,width-650,height-488,imgsize-192838,,resizemode-75/apple-alphabet-and-amazon-hurt-as-economic-slump-crimps-demand.jpg);
+  background-image: url("https://assets3.thrillist.com/v1/image/2931224/414x310/crop;webp=auto;jpeg_quality=60;progressive.jpg");
+  background-repeat: no-repeat;
+  background-size: 150% 100%;
 }
 .card:nth-child(3):before {
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEcK2KHAQTCEoC13G_MSVdKGwq9LNGD8ZC6w&usqp=CAU);
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuLTyRNuyNx-oURRvq8AG2VrF47ToJ39B_1A&usqp=CAU);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 .card:nth-child(4):before {
-  background-image: url(https://images.moneycontrol.com/static-mcnews/2018/03/Amazon-1.jpg);
-}
-
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHZb2-Bu8HHbF72KympPwk8Wi3qs0pOyUxnA&usqp=CAU);
+  background-repeat: no-repeat;
+background-size: 150% 100%;}
 .content {
   position: relative;
   display: flex;
@@ -110,20 +107,17 @@ body {
 .content > * + * {
   margin-top: 1rem;
 }
-
 .title {
   font-size: 1.3rem;
   font-weight: bold;
   line-height: 1.2;
 }
-
 .copy {
   font-family: var(--font-serif);
   font-size: 1.125rem;
   font-style: italic;
   line-height: 1.35;
 }
-
 .btn {
   cursor: pointer;
   margin-top: 1.5rem;
@@ -137,18 +131,19 @@ body {
   border: none;
 }
 .btn:hover {
-  background-color: #0d0d0d;
+  background-color: #0D0D0D;
+}
+.title-st{
+  text-align: center;
 }
 .btn:focus {
   outline: 1px dashed yellow;
   outline-offset: 3px;
 }
-
 @media (hover: hover) and (min-width: 600px) {
   .card:after {
     transform: translateY(0);
   }
-
   .content {
     transform: translateY(calc(100% - 4.5rem));
   }
@@ -157,7 +152,6 @@ body {
     transform: translateY(1rem);
     transition: transform var(--d) var(--e), opacity var(--d) var(--e);
   }
-
   .card:hover,
 .card:focus-within {
     align-items: center;
@@ -180,7 +174,6 @@ body {
     transform: translateY(0);
     transition-delay: calc(var(--d) / 8);
   }
-
   .card:focus-within:before, .card:focus-within:after,
 .card:focus-within .content,
 .card:focus-within .content > *:not(.title) {

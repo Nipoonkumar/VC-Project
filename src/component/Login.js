@@ -1,92 +1,77 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from 'react';
+import post from 'axios';
 import Sso from "./Sso";
+import { useDispatch,connect} from 'react-redux';
 import "/home/nineleaps/project/src/css/Login.css";
-
-function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [allEntry, setAllEntry] = useState([]);
-  const SubmitForm = (e) => {
-    e.preventDefault();
-    const newEntry = { email: email, password: password };
-    setAllEntry([...allEntry, newEntry]);
-    console.log(allEntry);
+// src/css/Login.css
+// import { Login } from '../redux/actions/auth';
+import { Navigate, useNavigate } from 'react-router-dom';
+// import { useSelector } from 'react';
+import axios from 'axios';
+import { api,baseUrl } from '/home/nineleaps/project/src/Api.js';
+const Ulogin = () => {
+  const navigate=useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+// const dispatch=useDispatch();
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    //  const registrationKey=localStorage.getItem('registrationKey');
+     axios.post(baseUrl.baseUrl+api.login, {
+      // registrationKey,
+        email,
+        password,
+      })
+    .then((result) => {
+      // dispatch(setToken(result.data.token));
+      console.log(result);
+      navigate('/HomePage');
+
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
   return (
-    <div className="app-wrapper1">
-      <h1>Log In</h1>
-      <form action="" onSubmit={SubmitForm}>
-        <div className="input-block1">
-          <label htmlFor="email">Email</label>
+    <>
+    <div className="Login-main">
+        <div className="container-left-login">
+          <img src="https://img.freepik.com/premium-photo/aesthetic-home-office-desk-workspace-with-laptop-computer-notebook-tabled-pad-white-background-flat-lay-top-view-blog-website-social-media-concept_408798-9640.jpg?w=360"></img>
+        </div>
+        <form onSubmit={handleSubmit} className="app-wrapper-login">
+          <h1>Login</h1>
+          <label className="txtForm-login">Email</label>
           <input
-            className="txtForms"
-            type="text"
-            name="email"
-            id="email"
-            placeholder="Email"
-            autoComplete="off"
+            type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmailChange}
+            className="input-field-login"
+            placeholder="Email/Phone"
           />
-        </div>
-        <div className="input-block-2">
-          <label className="label">Password</label>
+          <label className="txtForm-login">Password</label>
           <input
-            className="txtForm"
             type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-            autoComplete="off"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePasswordChange}
+            className="input-field-login"
+            placeholder="Password"
           />
-        </div>
-        <button type="submit" className="btn">
-          Login
-        </button>
-        <div className="Or">
-          <p>Or</p>
-        </div>
-        <div className="Sso">
-          <Sso />
-        </div>
-        <div className="Para">
-          <p>
-            Doesn't have an account? <a href="/Login.js">Get Started</a>
-          </p>
-        </div>
-      </form>
-    </div>
+          <button type="submit" className="submit-button" >
+            Login
+          </button>
+          <p className="or">Or</p>
+          <div className="Sso">
+            <Sso />
+          </div>
+        </form>
+      </div>
+    </>
   );
-}
-export default Login;
-
-
-
-// curl --location 'http://192.168.1.128:8080/api/v1/auth/authentication' \
-// --header 'Content-Type: application/json' \
-// --data-raw '{
-//     "email":"rawat1510@gmail.com",
-//     "password":"abhinav"
-// }'
-
-// curl --location 'http://192.168.1.128:8080/api/v1/auth/authentication' \
-// --header 'Content-Type: application/json' \
-// --data-raw '{
-//     "email":"rawat1510@gmail.com",
-//     "password":"abhinav@123"
-// }'
-
-
-// curl -X POST -d "email=Nik@gmail.com.com&password=Nik@123" http://192.168.1.128:8080/api/v1/auth/authentication
-
-// curl -X POST -d "username=myusername&password=mypassword" http://192.168.1.100:80/api/login
-
-// http://localhost:8080/api/v1/auth/authentication
-
-
-
-// Nik@123
-// Nik@gmail.com
-
+  };
+export default  Ulogin;

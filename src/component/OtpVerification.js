@@ -1,69 +1,56 @@
-
 import React, { useState } from "react";
 import axios from "axios";
 import "/home/nineleaps/project/src/css/otp.css";
+import id from "./BsignIn"
+import { useNavigate } from "react-router-dom";
+import { baseUrl, validate } from "../Api";
+import Signup from "./BsignIn";
+
 function Otp() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [otp, setOTP] = useState("");
-  const [otpSent, setOTPSent] = useState(false);
   const [otpVerified, setOTPVerified] = useState(false);
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
   const handleOTPChange = (event) => {
     setOTP(event.target.value);
   };
-  const handleSendOTP = () => {
-    axios
-      .post("/api/sendOTP", { email })
-      .then((response) => {
-        setOTPSent(true);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
   const handleVerifyOTP = () => {
+    const id= Signup.id;
+    const registerKey = localStorage.getItem('registrationKey');
     axios
-      .post("/api/verifyOTP", { email, otp })
+      .post(baseUrl.baseUrl+validate.validate, {
+        registerKey,
+        otpType:"registration_otp",
+        otp,
+      })
       .then((response) => {
         setOTPVerified(true);
         console.log(response.data);
+        if(id==="investor"){
+          navigate("/Registervc");
+        } else if(id==="startup"){
+          navigate("/Form");
+        }
       })
       .catch((error) => {
         console.log(error);
       });
   };
   return (
-  <div className="otpv">
-  <div className="veri">
-    <h1 >Verify Yourself!</h1>
-    </div>
-    <div className="Otp">
-      <h4>Enter your email</h4>
-      <input
-        type="text"
-        className="Input"
-        value={email}
-        onChange={handleEmailChange}
-        />
-      {!otpSent && (
-        <button onClick={handleSendOTP} className="submit">
-          Send OTP
-        </button>
-      )}
-      {otpSent && !otpVerified && (
-        <div>
-          <h1>Enter OTP:</h1>
-          <input type="text" value={otp} onChange={handleOTPChange} />
-          <button onClick={handleVerifyOTP}>Verify OTP</button>
-        </div>
-      )}
-      {otpVerified && <h1>OTP Verified Successfully!</h1>}
-    </div>
+    <div className="otpv" style={{width: "100%"}}>
+     
+      <div className="Otp">
+        <h4>Enter OTP:</h4>
+        <input className="Input"
+          type="text"
+          value={otp}
+          onChange={handleOTPChange} />
+        <button className="submit" onClick={handleVerifyOTP}>Verify OTP</button>
+        <br/>
+        {otpVerified && <h6>OTP Verified Successfully!</h6>}
+        <br />
       </div>
-      
+    </div>
   );
 }
 export default Otp;

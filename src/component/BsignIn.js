@@ -1,27 +1,33 @@
-import React, { useRef }from "react";
+import React, { useRef } from "react";
+// import toastr from "reactjs-toastr/lib/react-toast";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
 import { signUpSchema } from "../schemas/validation";
 import Otp from "../component/OtpVerification";
-
+import { useNavigate } from "react-router-dom";
 import axios from "./axios";
+// import { setKey } from "../redux/actions/auth";
 import "/home/nineleaps/project/src/css/Signup.css";
-// import { useEffect } from 'react';
 import Sso from "./Sso";
+import { signingup, baseUrl } from "/home/nineleaps/project/src/Api.js";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
+
 const initialValues = {
-  signuptype: "",
+  role: "",
   name: "",
   email: "",
   password: "",
   confirmpassword: "",
-};
+}
 function Signup() {
-  const [signuptype, setSignuptype] = useState();
+  const navigate = useNavigate();
+  const [role, setrole] = useState();
+  const [isSignupSuccess, setIsSignupSuccess] = useState(false);
+  const [backendError, setBackendError] = useState("");
   const handleChanged = (e) => {
     const target = e.target;
     if (target.checked) {
-      setSignuptype(target.value);
+      setrole(target.value);
     }
   };
   const {
@@ -34,53 +40,75 @@ function Signup() {
   } = useFormik({
     initialValues: initialValues,
     validationSchema: signUpSchema,
-    onSubmit: (values, action) => {
+    onSubmit: (values, dispatch) => {
       console.log({
-        signuptype: signuptype,
+        role: values.role,
         name: values.name,
         email: values.email,
         password: values.password,
-        confirmpassword: values.confirmpassword,
       });
-      // axios
-      //   .post("http://localhost:8081/api/v1/auth/registration", {
-      //     signuptype: values.signuptype,
-      //     name: values.name,
-      //     email: values.email,
-      //     password: values.password,
-      //     confirmpassword: values.confirmpassword,
-      //   })
-      //   .then((result) => {
-      //     console.log(result);
-      //     action.resetForm();
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
+      try {
+        axios.
+          post(baseUrl.baseUrl + signingup.signup,
+            {
+              role: role,
+              name: values.name,
+              email: values.email,
+              password: values.password,
+            })
+          .then((response) => {
+            const { registrationKey } = response.data;
+            localStorage.setItem('registrationKey', registrationKey)
+            localStorage.getItem('registrationKey');
+            // dispatch={setKey}
+            console.log(registrationKey);
+            console.log("Hello");
+            setIsSignupSuccess(true);
+            navigate('/Otp');
+          });
+      }
+      catch (error) {
+        console.log(error);
+        // if (error.result && error.result.data && error.result.data.message) {
+        //   setBackendError(error.result.data.message);
+        // } else {
+        //   setBackendError("An error occurred while submitting the form.");
+        // }
+      };
     },
   });
+
+  // const dispatch=useDispatch();
+  // const navigate=useNavigate();
+  // const navigateToOtp=()=>{
+  //   navigate('/Otp');
+  // }
   return (
     <>
       <div className="container-signup">
-        <h2 className="title-signup">Create Account</h2>
+        {/* <h2 className="title-signup">Create Account</h2> */}
+        <div className="container-left">
+          <img src="https://img.freepik.com/premium-photo/aesthetic-home-office-desk-workspace-with-laptop-computer-notebook-tabled-pad-white-background-flat-lay-top-view-blog-website-social-media-concept_408798-9640.jpg?w=360" alt="Unable to load"></img>
+        </div>
         <div className="app-wrapper-signup">
+        <h2 className="title-signup">Create Account</h2>
           <form onSubmit={handleSubmit}>
             <div onClick={handleChanged}>
               <input
                 type="radio"
-                className="Signuptype"
-                id="1"
+                className="role"
+                id="investor"
                 value="investor"
-                checked={signuptype == "investor"}
+                checked={role === "investor"}
                 onChange={handleChanged}
               />
               Investor
               <input
                 type="radio"
-                className="Signuptype"
-                id="2"
+                className="role"
+                id="startup"
                 value="startup"
-                checked={signuptype == "startup"}
+                checked={role === "startup"}
                 onChange={handleChanged}
               />
               StartUp
@@ -89,7 +117,7 @@ function Signup() {
               <label className="label-signup">Name</label>
               <input
                 className="txtForm-signup"
-                type="text"
+                type="name"
                 name="name"
                 id="name"
                 placeholder="Name"
@@ -149,21 +177,16 @@ function Signup() {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              {errors.confirmpassword && touched.confirmpassword ? (
-                <p className="form-error">{errors.confirmpassword}</p>
-              ) : null}
             </div>
             <div>
-           
-                <button className="submit" type="submit">Signup</button> 
-                
-              
+              <button className="submit" type="submit" onClick={handleSubmit}>Signup</button>
             </div>
+            {backendError && <p className="form-error">{backendError}</p>}
             <p>Or</p>
-            <div className="Sso">{/* <Sso /> */}</div>
+            <div className="Sso"><Sso /></div>
             <div className="Para">
               <p>
-                Already have an account? <a href="/Login.js">Login</a>
+                Already have an account? <a href="/login">Login</a>
               </p>
             </div>
           </form>

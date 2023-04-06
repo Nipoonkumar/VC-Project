@@ -1,45 +1,44 @@
-import React from 'react'
-import '/home/nineleaps/project/src/card/card css/styleVC .css'
-
-
-
-const CardVC = () => {
+import React from "react";
+import  "/home/nineleaps/project/src/card/card css/styleVC .css";
+const cardVC = () => {
   return (
-   <>
-<h1 className='heading'>Venture Capatlist</h1>
-
-    <main className="page-content">
-  <div className="card1">
-    <div className="content">
-      <h2 className="title">VC 1</h2>
-      <p className="copy">Check out all of these gorgeous mountain trips with beautiful views of, you guessed it, the mountains</p>
-      <button className="btn">View Trips</button>
-    </div>
-  </div>
-  <div className="card1">
-    <div className="content">
-      <h2 className="title">VC 2</h2>
-      <p className="copy">Plan your next beach trip with these fabulous destinations</p>
-      <button className="btn">View Trips</button>
-    </div>
-  </div>
-  <div className="card1">
-    <div className="content">
-      <h2 className="title">VC 3</h2>
-      <p className="copy">It's the desert you've always dreamed of</p>
-      <button className="btn">Book Now</button>
-    </div>
-  </div>
-  <div className="card">
-    <div className="content">
-      <h2 className="title">VC 4</h2>
-      <p className="copy">Seriously, straight up, just blast off into outer space today</p>
-      <button className="btn">Book Now</button>
-    </div>
-  </div>
-</main>
-</>
-  )
-}
-
-export default CardVC;
+    <>
+      <h1 className="title-vc">Venture Capitalist</h1>
+      <main class="page-content">
+        <div class="card-st">
+          <div class="content">
+            <h2 class="title">Vc 1</h2>
+            <p class="copy">Check out about this Company</p>
+            <button class="btn">See details</button>
+          </div>
+        </div>
+        <div class="card-st">
+          <div class="content">
+            <h2 class="title">Vc 2</h2>
+            <p class="copy">
+              Investing in great companies
+            </p>
+            <button class="btn">View Firm</button>
+          </div>
+        </div>
+        <div class="card-st">
+          <div class="content">
+            <h2 class="title">Vc 3</h2>
+            <p class="copy">Investing in future</p>
+            <button class="btn">See Details</button>
+          </div>
+        </div>
+        <div class="card-st">
+          <div class="content">
+            <h2 class="title">VC 4</h2>
+            <p class="copy">
+              See more details
+            </p>
+            <button class="btn">View Firm</button>
+          </div>
+        </div>
+      </main>
+    </>
+  );
+};
+export default cardVC

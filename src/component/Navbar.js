@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
-import {FaTimes,FaReact,FaBars} from "react-icons/fa";
+import {FaTimes,FaBars} from "react-icons/fa";
 import "/home/nineleaps/project/src/css/Navbar.css";
+import plant from "/home/nineleaps/project/src/Assets/plant.png";
 
 function Navbar() {
   const navRef=useRef();
@@ -9,7 +10,10 @@ function Navbar() {
   }
   return (
       <div className='container'>
-        <FaReact size={40} />
+        <div className='logo'>
+         <img src={plant} className="logo" alt="logo"/>
+         <p>Nineseeders</p></div>
+        {/* <FaReact size={40} /> */}
         <nav ref={navRef}>
           <a href="/GuestPage">Home</a>
           <a href="/">About Us</a>

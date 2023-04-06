@@ -4,34 +4,34 @@ import '/home/nineleaps/project/src/card/card css/styleStartup.css'
 const cardStartup = () => {
   return (
    <>
-<h1 className='heading'>Startup</h1>
+<h1 className='title-st'>Startup</h1>
     <main class="page-content">
   <div class="card">
     <div class="content">
       <h2 class="title">Startup 1</h2>
-      <p class="copy">Check out all of these gorgeous mountain trips with beautiful views of, you guessed it, the mountains</p>
-      <button class="btn">View Trips</button>
+      <p class="copy">Check out all the acheivemeents of the company</p>
+      <button class="btn">View Details</button>
     </div>
   </div>
   <div class="card">
     <div class="content">
       <h2 class="title">Startup 2</h2>
-      <p class="copy">Plan your next beach trip with these fabulous destinations</p>
-      <button class="btn">View Trips</button>
+      <p class="copy">Great products can do great things</p>
+      <button class="btn">View Details</button>
     </div>
   </div>
   <div class="card">
     <div class="content">
       <h2 class="title">Startup 3</h2>
-      <p class="copy">It's the desert you've always dreamed of</p>
-      <button class="btn">Book Now</button>
+      <p class="copy">Connecting people digitally</p>
+      <button class="btn">Invest Now</button>
     </div>
   </div>
   <div class="card">
     <div class="content">
       <h2 class="title">Startup 4</h2>
-      <p class="copy">Seriously, straight up, just blast off into outer space today</p>
-      <button class="btn">Book Now</button>
+      <p class="copy">Delevering trust</p>
+      <button class="btn">Invest Now</button>
     </div>
   </div>
 </main>

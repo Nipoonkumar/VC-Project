@@ -1,9 +1,9 @@
-.section_padding{
+section_padding{
     padding: 4rem 4rem;
 }
-/* #root{
+#root{
     width: 100%;
-} */
+}
 .Footer{
 background-color: #01010E;
 width: 100%;
@@ -11,6 +11,9 @@ width: 100%;
 .sb_footer{
 display: flex;
 flex-direction: column;
+}
+.sb_footer-links_div h4{
+    text-align: center;
 }
 .sb_footer-links{
 display: flex;
@@ -115,3 +118,12 @@ font-weight: 600;
     line-height: 38pxf;
 }
 }
+
+
+
+
+
+
+
+
+

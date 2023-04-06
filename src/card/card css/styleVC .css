@@ -1,26 +1,20 @@
-@import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Cardo:400i%7CRubik:400,700&display=swap");
 :root {
   --d: 700ms;
   --e: cubic-bezier(0.19, 1, 0.22, 1);
-  --font-sans: "Rubikhttps://accounts.google.com/gsi/client", sans-serif;
+  --font-sans: "Rubik", sans-serif;
   --font-serif: "Cardo", serif;
-}
-.heading{
-  text-align: center;
 }
 * {
   box-sizing: border-box;
 }
-
 html, body {
   height: 100%;
 }
-
 body {
   display: grid;
   place-items: center;
 }
-
 .page-content {
   display: grid;
   grid-gap: 1rem;
@@ -39,8 +33,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-
-.card1 {
+.card-st {
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -53,11 +46,11 @@ body {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
 }
 @media (min-width: 600px) {
-  .card1 {
+  .card-st {
     height: 350px;
   }
 }
-.card1:before {
+.card-st:before {
   content: "";
   position: absolute;
   top: 0;
@@ -69,7 +62,7 @@ body {
   transition: transform calc(var(--d) * 1.5) var(--e);
   pointer-events: none;
 }
-.card1:after {
+.card-st:after {
   content: "";
   display: block;
   position: absolute;
@@ -82,19 +75,23 @@ body {
   transform: translateY(-50%);
   transition: transform calc(var(--d) * 2) var(--e);
 }
-.card1:nth-child(1):before {
-  background-image: url(https://imageio.forbes.com/specials-images/imageserve/636d73e33beb2a8ab7fa6449/David-Rubenstein/1960x0.jpg?format=jpg&width=960);
+.card-st:nth-child(1):before {
+  background-image: url(https://sbnri.com/blog/wp-content/uploads/2022/05/Top-10-VCs-in-India.jpg);
+  background-repeat: no-repeat;
+  background-size: 150% 100%;
 }
-.card1:nth-child(2):before {
-  background-image: url(https://img.etimg.com/thumb/msid-92902509,width-440,height-330,imgsize-15738,resizemode-4/markets/stocks/news/etmarkets-smart-talk-how-to-manage-your-money-with-least-stress-here-are-top-4-focus-areas-to-become-a-successful-equity-investor.jpg);
-}
-.card1:nth-child(3):before {
-  background-image: url(https://yt3.googleusercontent.com/ytc/AL5GRJV_cKR-1X1eVARIqyny6ca5HzsVXlbE8KHq06RHZg=s900-c-k-c0x00ffffff-no-rj);
-}
-.card1:nth-child(4):before {
-  background-image: url(https://www.allbusiness.com/media-library/angel-investor.jpg?id=32092785&width=400&height=279);
-}
-
+.card-st:nth-child(2):before {
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaSgLMH8jUktgkQ_dxQqfwz8A2Y5nJqGL0pg&usqp=CAU);
+background-repeat: no-repeat;
+background-size: 120% 100%;}
+.card-st:nth-child(3):before {
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl1EXcgVNGYXTaxOU27Ky4_w2qLqdLpHrd3Q&usqp=CAU);
+  background-repeat: no-repeat;
+  background-size: 110% 100%;}
+.card-st:nth-child(4):before {
+  background-image: url(https://images-platform.99static.com//X7FRfRryGSBYdc1viW9x2K3WBf8=/0x0:1000x1000/fit-in/500x500/99designs-contests-attachments/94/94339/attachment_94339802);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;}
 .content {
   position: relative;
   display: flex;
@@ -108,20 +105,20 @@ body {
 .content > * + * {
   margin-top: 1rem;
 }
-
+.title-vc{
+  text-align: center;
+}
 .title {
   font-size: 1.3rem;
   font-weight: bold;
   line-height: 1.2;
 }
-
 .copy {
   font-family: var(--font-serif);
   font-size: 1.125rem;
   font-style: italic;
   line-height: 1.35;
 }
-
 .btn {
   cursor: pointer;
   margin-top: 1.5rem;
@@ -135,18 +132,16 @@ body {
   border: none;
 }
 .btn:hover {
-  background-color: #0d0d0d;
+  background-color: #0D0D0D;
 }
 .btn:focus {
   outline: 1px dashed yellow;
   outline-offset: 3px;
 }
-
 @media (hover: hover) and (min-width: 600px) {
-  .card1:after {
+  .card-st:after {
     transform: translateY(0);
   }
-
   .content {
     transform: translateY(calc(100% - 4.5rem));
   }
@@ -155,33 +150,40 @@ body {
     transform: translateY(1rem);
     transition: transform var(--d) var(--e), opacity var(--d) var(--e);
   }
-
-  .card1:hover,
-.card1:focus-within {
+  .card-st:hover,
+.card-st:focus-within {
     align-items: center;
   }
-  .card1:hover:before,
-.card1:focus-within:before {
+  .card-st:hover:before,
+.card-st:focus-within:before {
     transform: translateY(-4%);
   }
-  .card1:hover:after,
-.card1:focus-within:after {
+  .card-st:hover:after,
+.card-st:focus-within:after {
     transform: translateY(-50%);
   }
-  .car1:hover .content,
-.card1:focus-within .content {
+  .card-st:hover .content,
+.card-st:focus-within .content {
     transform: translateY(0);
   }
-  .card1:hover .content > *:not(.title),
-.card1:focus-within .content > *:not(.title) {
+  .card-st:hover .content > *:not(.title),
+.card-st:focus-within .content > *:not(.title) {
     opacity: 1;
     transform: translateY(0);
     transition-delay: calc(var(--d) / 8);
   }
-
-  .card1:focus-within:before, .card1:focus-within:after,
-.card1:focus-within .content,
-.card1:focus-within .content > *:not(.title) {
+  .card-st:focus-within:before, .card-st:focus-within:after,
+.card-st:focus-within .content,
+.card-st:focus-within .content > *:not(.title) {
     transition-duration: 0s;
   }
 }
+
+
+
+
+
+
+
+
+

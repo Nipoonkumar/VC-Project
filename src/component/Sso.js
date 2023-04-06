@@ -1,47 +1,74 @@
-import {useEffect, useState} from 'react';
 import React from 'react';
-// import jw from 'jwt-decode';
-import jwtDecode from 'jwt-decode';
+import { GoogleLoginButton } from 'react-social-login-buttons';
+import { LoginSocialGoogle } from 'reactjs-social-login';
 
 
-const google = window.google;
+
+// const google = window.google;
 
 function Sso(){
-    // console.log(google.accounts)
-    console.log('google:', google);
-console.log('google.accounts:', google.accounts);
-console.log('google.accounts.id:', google.accounts.id);
 
-    // const[user,setUser]=useState();
-    useEffect(()=>{ 
+
+//     // console.log(google.accounts)
+//     console.log('google:', google);
+// console.log('google.accounts:', google.accounts);
+// console.log('google.accounts.id:', google.accounts.id);
+
+//     // const[user,setUser]=useState();
+//     useEffect(()=>{ 
       
             
-        // global google
-        google.accounts.id.initialize({
-            client_id:"214250890867-6icteu2k2kfamb31020vhda61qfqj3j8.apps.googleusercontent.com",
-            callback:handleCallbackResponse
-        });
+//         // global google
+//         google.accounts.id.initialize({
+//             client_id:"114622682127-rfdcda1lrpqhh5so5dc9bg4j4e1q7vgl.apps.googleusercontent.com",
+//             callback:handleCallbackResponse
+//         });
 
-        google.accounts.id.renderButton(
-            document.getElementById("signInDiv"),
-            {theme:"outline",size:"large"}
-        );
-    },[]);
+//         google.accounts.id.renderButton(
+//             document.getElementById("signInDiv"),
+//             {theme:"outline",size:"large"}
+//         );
+//     },[]);
 
 
-    function handleCallbackResponse(response){
-        console.log("JWT ID Token: " + response.credential);
-        var userObject=jwtDecode(response.credential);
-        console.log(userObject);
-        // setUser(userObject);
-    }
+//     function handleCallbackResponse(response){
+//         console.log("JWT ID Token: " + response.credential);
+//         var userObject=jwtDecode(response.credential);
+//         console.log(userObject);
+//         // setUser(userObject);
+//     }
 
   
-    return(
+//     return(
         
-    <div id="signInDiv"></div>
+//     <div id="signInDiv"></div>
         
-    );
+//     );
+
+
+return(
+<div>
+    <LoginSocialGoogle
+    client_id={
+        "114622682127-rfdcda1lrpqhh5so5dc9bg4j4e1q7vgl.apps.googleusercontent.com"
+    }
+    scope="openid profile email"
+    discoveryDocs="claims_supported"
+    access_type="offline"
+
+    onResolve={({provider,data})=>{
+        console.log(provider,data);
+    }}
+    onReject={(err)=>{
+        console.log(err);
+    }}
+    >
+        <GoogleLoginButton/>
+    </LoginSocialGoogle>
+</div>
+
+)
+
 }
 
 export default Sso;
