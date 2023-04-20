@@ -1,35 +1,40 @@
-import React, { useRef } from "react";
-// import toastr from "reactjs-toastr/lib/react-toast";
+import React from "react";
 import { useFormik } from "formik";
 import { signUpSchema } from "../schemas/validation";
-import Otp from "../component/OtpVerification";
+
 import { useNavigate } from "react-router-dom";
 import axios from "./axios";
 // import { setKey } from "../redux/actions/auth";
-import "/home/nineleaps/project/src/css/Signup.css";
+import "../css/Signup.css";
 import Sso from "./Sso";
-import { signingup, baseUrl } from "/home/nineleaps/project/src/Api.js";
-import { useDispatch } from "react-redux";
+import { signingup, baseUrl } from "../Api.js";
+
 import { useState } from "react";
+import photo from "../Assets/Feeds.png";
 
 const initialValues = {
-  role: "",
+  role:"",
   name: "",
   email: "",
   password: "",
   confirmpassword: "",
-}
+};
+
 function Signup() {
   const navigate = useNavigate();
-  const [role, setrole] = useState();
+  const [role, setrole] = useState(0);
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
   const [isSignupSuccess, setIsSignupSuccess] = useState(false);
   const [backendError, setBackendError] = useState("");
+
   const handleChanged = (e) => {
     const target = e.target;
     if (target.checked) {
-      setrole(target.value);
+      setrole((e.target.value));
     }
   };
+  
   const {
     values,
     errors,
@@ -37,44 +42,53 @@ function Signup() {
     handleBlur,
     handleChange,
     handleSubmit,
+    
   } = useFormik({
     initialValues: initialValues,
     validationSchema: signUpSchema,
-    onSubmit: (values, dispatch) => {
+    onSubmit: (values) => {
       console.log({
-        role: values.role,
+        role: role,
         name: values.name,
         email: values.email,
         password: values.password,
       });
+     
+
       try {
-        axios.
-          post(baseUrl.baseUrl + signingup.signup,
-            {
-              role: role,
-              name: values.name,
-              email: values.email,
-              password: values.password,
-            })
+        axios
+          .post(baseUrl.baseUrl + signingup.signup, {
+            role: role,
+            name: values.name,
+            email: values.email,
+            password: values.password,
+          })
+
           .then((response) => {
             const { registrationKey } = response.data;
-            localStorage.setItem('registrationKey', registrationKey)
-            localStorage.getItem('registrationKey');
+            localStorage.setItem("registrationKey", registrationKey);
+            localStorage.getItem("registrationKey");
+
+            
+
+            const { token } = response.data;
+            localStorage.setItem("token", token);
+            localStorage.getItem("token");
             // dispatch={setKey}
             console.log(registrationKey);
             console.log("Hello");
             setIsSignupSuccess(true);
-            navigate('/Otp');
+            localStorage.setItem('role', role);
+            navigate("/Otp", { state: { role: role, registrationKey } });
           });
-      }
-      catch (error) {
+      } catch (error) {
         console.log(error);
         // if (error.result && error.result.data && error.result.data.message) {
         //   setBackendError(error.result.data.message);
         // } else {
         //   setBackendError("An error occurred while submitting the form.");
         // }
-      };
+      }
     },
   });
 
@@ -88,27 +102,27 @@ function Signup() {
       <div className="container-signup">
         {/* <h2 className="title-signup">Create Account</h2> */}
         <div className="container-left">
-          <img src="https://img.freepik.com/premium-photo/aesthetic-home-office-desk-workspace-with-laptop-computer-notebook-tabled-pad-white-background-flat-lay-top-view-blog-website-social-media-concept_408798-9640.jpg?w=360" alt="Unable to load"></img>
+          <img src={photo} alt="Unable to load"></img>
         </div>
         <div className="app-wrapper-signup">
-        <h2 className="title-signup">Create Account</h2>
+          <h2 className="title-signup">Create Account</h2>
           <form onSubmit={handleSubmit}>
             <div onClick={handleChanged}>
               <input
                 type="radio"
                 className="role"
-                id="investor"
-                value="investor"
-                checked={role === "investor"}
+                id="1"
+                value="1"
+                checked={role === "1"}
                 onChange={handleChanged}
               />
               Investor
               <input
                 type="radio"
                 className="role"
-                id="startup"
-                value="startup"
-                checked={role === "startup"}
+                id="2"
+                value="2"
+                checked={role === "2"}
                 onChange={handleChanged}
               />
               StartUp
@@ -136,7 +150,7 @@ function Signup() {
                 className="txtForm-signup"
                 type="email"
                 name="email"
-                id="email"
+                id="emails"
                 placeholder="Email"
                 autoComplete="off"
                 value={values.email}
@@ -179,13 +193,17 @@ function Signup() {
               />
             </div>
             <div>
-              <button className="submit" type="submit" onClick={handleSubmit}>Signup</button>
+              <button className="submit" type="submit" onClick={handleSubmit}>
+                Signup
+              </button>
             </div>
             {backendError && <p className="form-error">{backendError}</p>}
-            <p>Or</p>
-            <div className="Sso"><Sso /></div>
+            <p className="Or-sg">Or</p>
+            <div className="Sso">
+              <Sso />
+            </div>
             <div className="Para">
-              <p>
+              <p className="anchor-tag">
                 Already have an account? <a href="/login">Login</a>
               </p>
             </div>

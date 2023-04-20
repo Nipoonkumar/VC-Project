@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "/home/nineleaps/project/src/css/otp.css";
-import id from "./BsignIn"
+// import id from "./BsignIn"
 import { useNavigate } from "react-router-dom";
 import { baseUrl, validate } from "../Api";
 import Signup from "./BsignIn";
+import { useLocation } from "react-router-dom";
 
 function Otp() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const location=useLocation();
+  // const [email, setEmail] = useState("");
   const [otp, setOTP] = useState("");
   const [otpVerified, setOTPVerified] = useState(false);
   const handleOTPChange = (event) => {
     setOTP(event.target.value);
   };
   const handleVerifyOTP = () => {
-    const id= Signup.id;
+    // const id= Signup.id;
     const registerKey = localStorage.getItem('registrationKey');
     axios
       .post(baseUrl.baseUrl+validate.validate, {
@@ -25,13 +27,15 @@ function Otp() {
       })
       .then((response) => {
         setOTPVerified(true);
-        console.log(response.data);
-        if(id==="investor"){
-          navigate("/Registervc");
-        } else if(id==="startup"){
-          navigate("/Form");
+        const data = location.state;
+        console.log(data);
+        if(data.role ==='1'){
+        navigate('/registrationvc',registerKey);
         }
-      })
+        else if(data.role ==='2'){
+          navigate('/registrationEnt',registerKey);
+        }
+        console.log(response.data)})
       .catch((error) => {
         console.log(error);
       });

@@ -1,19 +1,19 @@
 import React, { useRef, useState } from 'react';
 import post from 'axios';
 import Sso from "./Sso";
-import { useDispatch,connect} from 'react-redux';
-import "/home/nineleaps/project/src/css/Login.css";
+import { useDispatch, connect } from 'react-redux';
+import "../css/Login.css";
 // src/css/Login.css
 // import { Login } from '../redux/actions/auth';
 import { Navigate, useNavigate } from 'react-router-dom';
 // import { useSelector } from 'react';
 import axios from 'axios';
-import { api,baseUrl } from '/home/nineleaps/project/src/Api.js';
+import { api, baseUrl } from '../Api.js';
 const Ulogin = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-// const dispatch=useDispatch();
+  // const dispatch=useDispatch();
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -23,24 +23,28 @@ const Ulogin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     //  const registrationKey=localStorage.getItem('registrationKey');
-     axios.post(baseUrl.baseUrl+api.login, {
+    axios.post(baseUrl.baseUrl + api.login, {
       // registrationKey,
-        email,
-        password,
-      })
-    .then((result) => {
-      // dispatch(setToken(result.data.token));
-      console.log(result);
-      navigate('/HomePage');
-
+      email,
+      password,
     })
-    .catch((error) => {
-      console.log(error);
-    });
+      .then((response) => {
+        // dispatch(setToken(result.data.token));
+        const { token } = response.data;
+        localStorage.setItem("token", token);
+        localStorage.getItem("token");
+
+        console.log(response);
+        navigate('/Feedspage');
+
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   return (
     <>
-    <div className="Login-main">
+      <div className="Login-main">
         <div className="container-left-login">
           <img src="https://img.freepik.com/premium-photo/aesthetic-home-office-desk-workspace-with-laptop-computer-notebook-tabled-pad-white-background-flat-lay-top-view-blog-website-social-media-concept_408798-9640.jpg?w=360"></img>
         </div>
@@ -73,5 +77,5 @@ const Ulogin = () => {
       </div>
     </>
   );
-  };
-export default  Ulogin;
+};
+export default Ulogin;

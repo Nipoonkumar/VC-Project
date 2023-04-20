@@ -12,7 +12,7 @@ function Navbar() {
       <div className='container'>
         <div className='logo'>
          <img src={plant} className="logo" alt="logo"/>
-         <p>Nineseeders</p></div>
+         <h3><b>NineSeeds</b></h3></div>
         {/* <FaReact size={40} /> */}
         <nav ref={navRef}>
           <a href="/GuestPage">Home</a>

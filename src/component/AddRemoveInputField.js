@@ -1,7 +1,8 @@
+
 import React, { Component, useState } from "react";
-import "/home/nineleaps/project/src/css/addremove.css";
+// import "../css/addremove.css";
 function AddRemoveInputField() {
-  const [inputFields, setInputFields] = useState([
+  const [formData, setFormData] = useState([
     {
       fullName: "",
       email: "",
@@ -9,8 +10,8 @@ function AddRemoveInputField() {
     },
   ]);
   const addInputField = () => {
-    setInputFields([
-      ...inputFields,
+    setFormData([
+      ...formData,
       {
         fullName: "",
         email: "",
@@ -19,29 +20,31 @@ function AddRemoveInputField() {
     ]);
   };
   const removeInputFields = (index) => {
-    const rows = [...inputFields];
+    const rows = [...formData];
     rows.splice(index, 1);
-    setInputFields(rows);
-  };
-  const handleChange = (index, evnt) => {
-    const { name, value } = evnt.target;
-    const list = [...inputFields];
-    list[index][name] = value;
-    setInputFields(list);
+    setFormData(rows);
   };
   return (
-    <div className="container-1">
+    <div className="add-info-container">
       <div className="row">
-        <div className="col-sm-8">
-          {inputFields.map((data, index) => {
-            const { fullName, email, role } = data;
+        <div>
+          {formData.map((index) => {
+           const { fullName, email, role } = formData[index];
             return (
-              <div className="row my-3" key={index}>
+              <div key={index}>
                 <div className="col">
                   <div className="form-group">
                     <input
                       type="text"
-                      onChange={(evnt) => handleChange(index, evnt)}
+                      onChange={(event) =>
+                        setFormData(
+                          formData.map((item, idx) =>
+                            idx === index
+                              ? { ...item, fullName: event.target.value }
+                              : item
+                          )
+                        )
+                      }
                       value={fullName}
                       name="fullName"
                       className="txtForm-1"
@@ -49,7 +52,15 @@ function AddRemoveInputField() {
                     />
                     <input
                       type="email"
-                      onChange={(evnt) => handleChange(index, evnt)}
+                      onChange={(event) =>
+                        setFormData(
+                          formData.map((item, idx) =>
+                            idx === index
+                              ? { ...item, email: event.target.value }
+                              : item
+                          )
+                        )
+                      }
                       value={email}
                       name="email"
                       className="txtForm-1"
@@ -58,7 +69,15 @@ function AddRemoveInputField() {
                     <select
                       name="role"
                       value={role}
-                      onChange={(evnt) => handleChange(index, evnt)}
+                      onChange={(event) =>
+                        setFormData(
+                          formData.map((item, idx) =>
+                            idx === index
+                              ? { ...item, role: event.target.value }
+                              : item
+                          )
+                        )
+                      }
                     >
                       <option value="CEO">CEO</option>
                       <option value="CTO">CTO</option>
@@ -70,8 +89,11 @@ function AddRemoveInputField() {
                   </div>
                 </div>
                 <div className="col">
-                  {inputFields.length !== 0 ? (
-                    <button className="btn" onClick={removeInputFields}>
+                  {formData.length !== 1 ? (
+                    <button
+                      className="btn"
+                      onClick={() => removeInputFields(index)}
+                    >
                       x
                     </button>
                   ) : (

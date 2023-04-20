@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import "/home/nineleaps/project/src/css/registervc.css";
-// import "/home/nineleaps/Downloads/frontend_project-main/src/css/startup.css";
+import axios from "axios";
+import { baseUrl, registrationvc } from "../Api";
+import "../css/registervc.css";
 const Registervc = () => {
   const [userregisteration, setuserregisteration] = useState({
-    profileImage: "",
+    profileImage:"",
     vcname: "",
     vclinkedin: "",
     email: "",
@@ -25,46 +26,47 @@ const Registervc = () => {
     console.log(name, value);
     setuserregisteration({ ...userregisteration, [name]: value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const recordData = { ...userregisteration };
-    console.log(records);
-    setRecords([...records, recordData]);
-    // setuserregisteration({Profilepic:'',vcname:'',vclinkedin:'',
-    // email:'',
-    // contact:'',
-    // expertise:'',
-    // Bio:'',
-    // location:"",
-    // city:'',
-    // Buildingno:'',
-    // street:'',
-    // state:'',
-    // country:'',
-    // pin:''
-    // })
-    // console.log(records);
+    try {
+      const response = await axios.post(baseUrl.baseUrl+registrationvc.registrationvc,{recordData}
+      );
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      setRecords([...records, recordData]);
+      setuserregisteration({ ...userregisteration,
+        profileImage:"",
+        vcname: "",
+        vclinkedin: "",
+        email: "",
+        contact: "",
+        expertise: "",
+        Bio: "",
+        location: "",
+        city: "",
+        Buildingno: "",
+        street: "",
+        state: "",
+        country: "",
+        pin: "",
+      });
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+    }
   };
   return (
     <>
-      <div className="form-container-vc">
+      <div className="main">
         <form action="" onSubmit={handleSubmit}>
           <h2>Register as Investor</h2>
           <div>
-            <label className="Photo" htmlFor="profileImage">
-              Photo
-            </label>
-            <br></br>
-            <input
-              type="file"
-              autoComplete="off"
-              value={userregisteration.profileImage}
-              onChange={handleInput}
-              name="profileImage"
-              id="profileImage"
-              className="txtForm-1"
-            />
-          </div>
+      <label htmlFor='profileImage'>Photo</label><br></br>
+      <input type="file" autoComplete='off'
+      value={userregisteration.profileImage} onChange={handleInput}
+      name="profileImage" id="profileImage" className='txtForm'/>
+      </div>
           <div>
             <label htmlFor="vcname">Name</label>
             <br></br>
@@ -212,7 +214,7 @@ const Registervc = () => {
             />
           </div>
           <button className="btn" onClick="submit">
-            Register{" "}
+            Register
           </button>
         </form>
       </div>

@@ -11,10 +11,11 @@
 html, body {
   height: 100%;
 }
-body {
+/* body {
   display: grid;
   place-items: center;
-}
+} */
+
 .page-content {
   display: grid;
   grid-gap: 1rem;

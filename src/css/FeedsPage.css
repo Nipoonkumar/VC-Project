@@ -1,0 +1,73 @@
+
+.Main-feed-div{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    margin: 10px;
+    padding: 10px;
+    height: 100%;
+    
+    
+}
+.Feeds-Image{
+    position: relative;
+    margin: 20px;
+    padding: 20px;
+    /* top: 400px; */
+    /* left: 0px; */
+    height: 600px;
+    width: 500px;
+}
+#feed-main-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Feeds-wrapper{
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    width: 700px;
+    box-shadow: 2px 1px 28px  rgb(148, 148, 148);
+    border-radius: 20px;
+}
+
+.Feeds-Title-div{
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    /* width: 700px; */
+}
+.Feeds-title{
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    width:610px;
+    border-radius: 10px;
+}
+.Feeds-Body{
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    /* width: 600px; */
+}
+.Feeds-Content-input{
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    width:610px;
+    border-radius: 10px;
+    height: 150px;
+}
+.Feeds-Buttons{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn{
+    border-radius: 25px;
+    width: 150px;
+}

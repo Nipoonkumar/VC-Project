@@ -8,9 +8,16 @@ export const signingup={
 export const validate={
     validate:"/validate"
 }
-export const registervc={
-    registervc:"/registration-vc"
+export const registrationvc={
+    registrationvc:"/registrationvc"
 }
+
+
+export const registrationEnt={
+    registrationEnt:"/registrationEnt"
+}
+
+
 
 export const baseUrl={
     baseUrl:"http://192.168.1.128:8080/api.venturecapitalist.com",

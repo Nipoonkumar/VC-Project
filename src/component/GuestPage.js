@@ -10,6 +10,7 @@ const GuestPage = () => {
   return (
 
     <>
+    
     <Navbar />
 
         <Banner /><div className="card-container1">

@@ -6,7 +6,7 @@ section_padding{
 }
 .Footer{
 background-color: #01010E;
-width: 100%;
+/* width: 100%; */
 }
 .sb_footer{
 display: flex;

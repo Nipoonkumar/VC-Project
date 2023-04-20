@@ -1,107 +1,122 @@
-import React from "react";
-import useFormContext from "/home/nineleaps/project/src/component/hooks/Useformcontext.js";
-import "/home/nineleaps/project/src/css/personalinfo.css";
-const Entreprenur = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-  const { data, handleInput } = useFormContext();
+import React, { useState } from "react";
+import "../css/personalinfo.css"
+import { useLocation } from "react-router-dom";
+
+function Entreprenur({ formData, setFormData }){
+
   return (
     <>
-      <div className="form-container">
-        <form action="" onSubmit={handleSubmit}>
-          <h1>Register yourself</h1>
-          <br />
+      <div>
+        <form action="" >
+          
           <div>
             <label htmlFor="profileImage">Photo</label>
             <br></br>
             <input
               type="file"
               autoComplete="off"
-              value={data.profileImage}
-              onChange={handleInput}
+              value={formData.profileImage}
+              onChange={
+                (event)=>setFormData({...formData, profileImage:event.target.value})
+            }
               name="profileImage"
               id="profileImage"
               className="txtForm"
             />
           </div>
-          <div>
-            <label htmlFor="fname">Name</label>
-            <br></br>
+          <div id="fname">
+            <label htmlFor="name">Name</label>
+           
             <input
               type="text"
               autoComplete="off"
-              value={data.fname}
-              onChange={handleInput}
-              name="fname"
-              id="fname"
+             value={formData.name}
+             onChange={
+              (event)=>setFormData({...formData, name:event.target.value})
+          }
+              
+              name="name"
+              
               className="txtForm"
             />
           </div>
-          <div>
+          <div id="email-pi">
             <label htmlFor="email">Email</label>
-            <br></br>
+            
             <input
               type="text"
               autoComplete="off"
-              value={data.email}
-              onChange={handleInput}
+              value={formData.email}
+              onChange={
+                (event)=>setFormData({...formData, email:event.target.value})
+            }
+
               name="email"
-              id="email"
+              
               className="txtForm"
             />
           </div>
-          <div>
+          <div  id="phone-pi">
             <label htmlFor="phone">Phone</label>
-            <br></br>
+            
             <input
               type="tel"
               autoComplete="off"
-              value={data.phone}
-              onChange={handleInput}
+              minLength="10"
+              maxLength="10"
+              value={formData.phone}
+              onChange={(event)=>setFormData({...formData, phone:event.target.value})}
               name="phone"
-              id="phone"
+             
               className="txtForm"
             />
           </div>
-          <div>
+          <div id="city-pi">
             <label htmlFor="location">Location</label>
-            <br></br>
+            
+            <input
+              type="text-6"
+              autoComplete="off"
+              value={formData.city}
+              onChange={(event)=>setFormData({...formData, city:event.target.value})}
+              name="city"
+              
+              placeholder="city"
+              className="txtForm"
+            />
+            </div>
+            <div id="state-pi">
+            <input
+              type="text-6"
+              autoComplete="off"
+              value={formData.state}
+              onChange={(event)=>setFormData({...formData, state:event.target.value})}
+              name="state"
+              
+              placeholder="state"
+              className="txtForm"
+            />
+            </div>
+            <div id="country-pi">
             <input
               type="text"
               autoComplete="off"
-              value={data.City}
-              onChange={handleInput}
-              name="City"
-              id="City"
-              placeholder="City"
+              value={formData.country}
+              onChange={(event)=>setFormData({...formData, country:event.target.value})}
+              name="country"
+              
+              placeholder="country"
               className="txtForm"
             />
-            <input
-              type="text"
-              autoComplete="off"
-              value={data.State}
-              onChange={handleInput}
-              name="State"
-              id="State"
-              placeholder="State"
-              className="txtForm"
-            />
-            <br></br>
-            <input
-              type="text"
-              autoComplete="off"
-              value={data.Country}
-              onChange={handleInput}
-              name="Country"
-              id="Country"
-              placeholder="Country"
-              className="txtForm"
-            />
-          </div>
-        </form>
-      </div>
-    </>
-  );
+            </div>
+            
+      
+    </form>
+  </div>
+</>
+);
 };
+
+
+
 export default Entreprenur;

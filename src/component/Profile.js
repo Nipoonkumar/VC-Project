@@ -26,7 +26,7 @@ const Profile = () => {
             <li>Team</li>
             <li>More Info</li>
             
-             <button className='Nudge-btn'>Nudge</button>
+             <button className='Interested-btn'>Interested</button>
                 </div>
                 </div>
             

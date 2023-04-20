@@ -1,0 +1,81 @@
+.main-FeedsDisplay-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px;
+  /* padding: 10px; */
+  align-items: center;
+  bottom: 10px;
+  flex-direction: column;
+}
+
+.Feeds-Main {
+  position: relative;
+  background-color: #29d8a625;
+  height: 200px;
+  
+  width: 68%;
+  border-radius: 20px;
+  color: black;
+  margin-bottom: 20px;
+  display: block;
+  /* /* display: flex; */
+  flex-direction: column; 
+}
+.Feeds-Photo {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  margin: 20px;
+  left: 10px;
+  border-radius: 50%;
+  
+  overflow: hidden;
+}
+
+.Feeds-Photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Feeds-Name {
+    background-color: #ffffffc2;
+    border-radius: 10px;
+    margin-right: 50px;
+    /* padding: 15px; */
+}
+.Feeds-Time {
+    background-color: #ffffffc2;
+  align-items: end;
+  right: 20px;
+  border-radius: 10px;
+  /* padding: 15px; */
+}
+/* .Feeds-Cont {
+  background-color: bisque;
+  margin: 20px;
+  
+  height: 100%;
+} */
+.Feeds-Cont {
+  position: relative;
+  display: flex;
+  margin: 10px;
+  bottom: 20px;
+  background-color: #ffffffc2;
+  padding: 10px;
+  border-radius: 10px;
+  height: auto;
+  top: 90px;
+}
+.Feeds-Name-Time {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  left: 110px;
+  width: ;
+  /* height: 100px; */
+  /* padding: 10px; */
+  margin: 20px;
+}
